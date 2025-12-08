@@ -34,5 +34,5 @@ def test_whatsapp_webhook_post_calls_send(monkeypatch):
     assert response.status_code == 201
     assert response.json() == {"status": "created"}
 
-    assert called["to"] == "972500000000"
+    assert called["to"] == "972549406690"
     assert called["text"] == "Hello from fixture"
