@@ -87,4 +87,4 @@ async def test_send_whatsapp_message_no_config_skips_send(monkeypatch):
     )
 
     # Assert: no URL means we skipped sending
-    assert fake_client.last_url is None
+    assert fake_client.calls == 0
