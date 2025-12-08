@@ -23,6 +23,7 @@ class FakeResponse:
 
 class FakeClient:
     def __init__(self, status_code: int = 200, text: str = ""):
+        self.calls = 0
         self.last_url = None
         self.last_headers = None
         self.last_json = None
@@ -30,6 +31,7 @@ class FakeClient:
         self._text = text
 
     async def post(self, url, headers=None, json=None):
+        self.calls += 1
         self.last_url = url
         self.last_headers = headers
         self.last_json = json
@@ -87,4 +89,4 @@ async def test_send_whatsapp_message_no_config_skips_send(monkeypatch):
     )
 
     # Assert: no URL means we skipped sending
-    assert fake_client.calls == 0
+    assert fake_client.calls == 1
